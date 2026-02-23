@@ -5,50 +5,165 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Plan Fit Kevin</title>
 
-<!-- Bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- SweetAlert2 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <style>
+
 body {
-    background: #0f172a;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    font-family: 'Segoe UI', sans-serif;
     color: white;
 }
-.card {
-    background: #1e293b;
-    border: none;
-    border-radius: 15px;
+
+.title {
+    text-align:center;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
+
+.card-glass {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 0 20px rgba(0,255,255,0.2);
+}
+
+.meal-title {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
 .btn-fit {
     background: linear-gradient(45deg,#00f5a0,#00d9f5);
     border: none;
-    color: black;
+    border-radius: 20px;
     font-weight: bold;
+    padding: 5px 15px;
 }
+
 .navbar-bottom {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background: #1e293b;
+    padding: 10px;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(10px);
 }
+
 </style>
 </head>
 <body>
 
-<div class="container mt-3 mb-5">
-
-<h3 class="text-center mb-4">💪 Plan Semanal</h3>
+<div class="container mb-5">
+<h3 class="title">💪 Plan Semanal</h3>
 
 <div id="contenido"></div>
-
 </div>
 
-<nav class="navbar-bottom text-center py-2">
+<div class="navbar-bottom text-center">
 <button class="btn btn-fit w-75" onclick="verLista()">🛒 Lista de Compras</button>
-</nav>
+</div>
 
-<script src="js/app.js"></script>
+<script>
+
+const plan = {
+  Lunes: {
+    desayuno: { titulo: "🍳 Huevos con Avena", receta: "Cocinar huevos sin aceite. Hervir avena 5 minutos." },
+    almuerzo: { titulo: "🍗 Pollo con Ensalada", receta: "Asar pollo y acompañar con ensalada fresca." },
+    merienda: { titulo: "🥛 Yogurt y Nueces", receta: "Mezclar yogurt natural con nueces." }
+  },
+  Martes: {
+    desayuno: { titulo: "🥑 Omelette con Aguacate", receta: "Preparar omelette y añadir aguacate." },
+    almuerzo: { titulo: "🐟 Atún con Arroz", receta: "Mezclar atún con ensalada y arroz controlado." },
+    merienda: { titulo: "🍎 Manzana y Maní", receta: "Consumir fresco." }
+  },
+  Miércoles: {
+    desayuno: { titulo: "🍳 Huevos Revueltos", receta: "Cocinar sin aceite." },
+    almuerzo: { titulo: "🥩 Carne con Verduras", receta: "Asar carne y acompañar con verduras." },
+    merienda: { titulo: "🥛 Yogurt Natural", receta: "Consumir frío." }
+  },
+  Jueves: {
+    desayuno: { titulo: "🥣 Avena con Fruta", receta: "Hervir avena y añadir fruta." },
+    almuerzo: { titulo: "🍗 Pollo al Grill", receta: "Asar pollo sin aceite." },
+    merienda: { titulo: "🍌 Banano", receta: "Consumir fresco." }
+  },
+  Viernes: {
+    desayuno: { titulo: "🍳 Huevos y Fruta", receta: "Cocinar huevos sin aceite." },
+    almuerzo: { titulo: "🐟 Pescado con Ensalada", receta: "Asar pescado y servir con ensalada." },
+    merienda: { titulo: "🥜 Nueces", receta: "Consumir porción pequeña." }
+  },
+  Sábado: {
+    desayuno: { titulo: "🥑 Omelette", receta: "Preparar omelette saludable." },
+    almuerzo: { titulo: "🍗 Pollo con Arroz", receta: "Controlar porción de arroz." },
+    merienda: { titulo: "🍎 Fruta", receta: "Consumir fresca." }
+  },
+  Domingo: {
+    desayuno: { titulo: "🥣 Avena", receta: "Hervir con agua." },
+    almuerzo: { titulo: "🥩 Carne Asada", receta: "Asar sin aceite." },
+    merienda: { titulo: "🥛 Yogurt", receta: "Consumir frío." }
+  }
+};
+
+function cargarPlan() {
+  const cont = document.getElementById("contenido");
+  for (let dia in plan) {
+    cont.innerHTML += `
+      <div class="card-glass">
+        <h5>${dia}</h5>
+        ${crearComida(plan[dia].desayuno)}
+        ${crearComida(plan[dia].almuerzo)}
+        ${crearComida(plan[dia].merienda)}
+      </div>
+    `;
+  }
+}
+
+function crearComida(comida) {
+  return `
+    <div class="meal-title">${comida.titulo}</div>
+    <button class="btn btn-fit btn-sm mt-2" onclick="verReceta('${comida.titulo}','${comida.receta}')">
+    Ver Receta
+    </button>
+  `;
+}
+
+function verReceta(titulo, receta) {
+  Swal.fire({
+    title: titulo,
+    text: receta,
+    background: '#1e293b',
+    color: 'white',
+    confirmButtonColor: '#00f5a0'
+  });
+}
+
+function verLista() {
+  Swal.fire({
+    title: "🛒 Lista de Compras",
+    html: `
+    <ul style="text-align:left">
+      <li>Huevos</li>
+      <li>Pollo</li>
+      <li>Carne</li>
+      <li>Atún</li>
+      <li>Avena</li>
+      <li>Verduras</li>
+      <li>Frutas</li>
+    </ul>
+    `,
+    background: '#1e293b',
+    color: 'white',
+    confirmButtonColor: '#00f5a0'
+  });
+}
+
+cargarPlan();
+
+</script>
+
 </body>
 </html>
