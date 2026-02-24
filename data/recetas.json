@@ -2,6 +2,7 @@
   "lunes": {
     "desayuno": {
       "titulo": "Tostadas de Aguacate con Huevo Poché y Quinoa",
+      "imagen": "img/Tostadas de Aguacate.png",
       "porciones": 1,
       "tiempo": "20 min",
       "ingredientes": [

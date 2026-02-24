@@ -46,23 +46,27 @@ function crearBloque(dia, tipo) {
         </div>
     `;
 }
-
 function mostrarReceta(dia, tipo) {
     const receta = datosGlobal[dia][tipo];
 
     Swal.fire({
         title: receta.titulo,
         html: `
+            <img src="${receta.imagen}" class="receta-img">
+
             <p><strong>Porciones:</strong> ${receta.porciones}</p>
             <p><strong>Tiempo:</strong> ${receta.tiempo}</p>
+
             <h6>🛒 Ingredientes</h6>
             <ul style="text-align:left;">
                 ${receta.ingredientes.map(i => `<li>${i}</li>`).join("")}
             </ul>
+
             <h6>🍽 Preparación</h6>
             <ol style="text-align:left;">
                 ${receta.preparacion.map(p => `<li>${p}</li>`).join("")}
             </ol>
+
             <p><strong>⭐ Valor nutricional:</strong> ${receta.valor_nutricional}</p>
         `,
         background: "#0f172a",
