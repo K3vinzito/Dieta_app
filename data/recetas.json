@@ -1,0 +1,65 @@
+{
+  "lunes": {
+    "desayuno": {
+      "titulo": "Tostadas de Aguacate con Huevo Poché y Quinoa",
+      "porciones": 1,
+      "tiempo": "20 min",
+      "ingredientes": [
+        "1/2 taza de quinoa cocida",
+        "2 rebanadas de pan integral",
+        "1 aguacate pequeño",
+        "2 huevos",
+        "1 cda vinagre",
+        "Sal y pimienta al gusto"
+      ],
+      "preparacion": [
+        "Lava la quinoa.",
+        "Hiérvela con 1 taza de agua durante 12-15 minutos.",
+        "Tuesta el pan hasta dorar.",
+        "Machaca el aguacate con sal y limón.",
+        "Hierve agua con vinagre.",
+        "Rompe el huevo y cocina 3-4 minutos.",
+        "Monta la tostada y sirve."
+      ],
+      "valor_nutricional": "Alto en proteína, grasas saludables y fibra."
+    },
+    "almuerzo": {
+      "titulo": "Salmón al Horno con Vegetales",
+      "porciones": 1,
+      "tiempo": "35 min",
+      "ingredientes": [
+        "200 g salmón",
+        "1 calabacín",
+        "1 zanahoria",
+        "1 cda aceite de oliva",
+        "Sal y pimienta"
+      ],
+      "preparacion": [
+        "Precalienta horno a 200°C.",
+        "Sazona el salmón.",
+        "Corta vegetales.",
+        "Hornea 20 minutos.",
+        "Sirve caliente."
+      ],
+      "valor_nutricional": "Rico en omega 3 y proteínas."
+    },
+    "merienda": {
+      "titulo": "Ensalada de Garbanzos",
+      "porciones": 1,
+      "tiempo": "10 min",
+      "ingredientes": [
+        "1/2 taza garbanzos cocidos",
+        "1 tomate",
+        "1/4 pepino",
+        "1 cdta aceite de oliva",
+        "Limón"
+      ],
+      "preparacion": [
+        "Mezcla todos los ingredientes.",
+        "Añade limón y aceite.",
+        "Sirve fresco."
+      ],
+      "valor_nutricional": "Fibra y proteína vegetal."
+    }
+  }
+}
