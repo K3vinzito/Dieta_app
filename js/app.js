@@ -104,3 +104,55 @@ function verLista() {
         width: "95%"
     });
 }
+
+function registrarPeso() {
+    Swal.fire({
+        title: "Registrar Peso",
+        html: `
+            <select id="persona" class="swal2-input">
+                <option value="Kevin">Kevin</option>
+                <option value="Anita">Anita</option>
+            </select>
+            <input type="number" id="peso" class="swal2-input" placeholder="Peso en kg">
+        `,
+        confirmButtonText: "Guardar",
+        confirmButtonColor: "#00f5a0",
+        background: "#0f172a",
+        color: "white",
+        preConfirm: () => {
+            const persona = document.getElementById("persona").value;
+            const peso = document.getElementById("peso").value;
+
+            if (!peso) {
+                Swal.showValidationMessage("Ingrese un peso válido");
+                return false;
+            }
+
+            guardarPeso(persona, peso);
+        }
+    });
+}
+
+function guardarPeso(persona, peso) {
+    const fecha = new Date().toLocaleDateString();
+
+    const registro = {
+        persona: persona,
+        peso: parseFloat(peso),
+        fecha: fecha
+    };
+
+    let historial = JSON.parse(localStorage.getItem("historialPeso")) || [];
+    historial.push(registro);
+
+    localStorage.setItem("historialPeso", JSON.stringify(historial));
+
+    Swal.fire({
+        title: "Guardado",
+        text: "Peso registrado correctamente",
+        icon: "success",
+        confirmButtonColor: "#00f5a0",
+        background: "#0f172a",
+        color: "white"
+    });
+}
